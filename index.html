@@ -335,146 +335,120 @@
     .pcard:hover .tag { background: rgba(0,153,255,.08); color: var(--accent); }
 
 
-    /* ─── BENTO SECTION ──────────────────────────────── */
+    /* ─── COLLAB / ABOUT SECTION ─────────────────────── */
     #about {
       background: var(--bg);
       padding: 0 64px 100px;
     }
 
-    .bento-grid {
-      display: grid;
-      grid-template-columns: 1fr 248px 1fr;
-      grid-template-rows: 300px 300px;
-      gap: 14px;
+    .collab-divider {
+      height: 1px;
+      background: rgba(26,26,26,.12);
+      margin-bottom: 44px;
+    }
+
+    .collab-head { margin-bottom: 56px; }
+
+    .collab-title {
+      font-family: var(--body);
+      font-size: clamp(28px, 3.8vw, 60px);
+      font-weight: 600;
+      letter-spacing: -0.036em;
+      line-height: 1.02;
+      color: var(--text);
+    }
+
+    .collab-email {
+      display: block;
+      font-family: var(--body);
+      font-size: clamp(24px, 3.5vw, 56px);
+      font-weight: 600;
+      letter-spacing: -0.036em;
+      line-height: 1.02;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .22s ease;
+    }
+    .collab-email:hover { color: var(--accent); }
+
+    /* ── Scatter scene ── */
+    .scatter-scene {
+      position: relative;
+      height: 680px;
       max-width: 1100px;
       margin: 0 auto;
     }
 
-    /* Portrait — middle column, spans both rows */
-    .bento-portrait {
-      grid-column: 2;
-      grid-row: 1 / 3;
-      border-radius: 20px;
-      overflow: hidden;
-      background: #F0EDE8;
+    /* Portrait — centered, full height */
+    .sc-portrait {
+      position: absolute;
+      left: 50%; transform: translateX(-50%);
+      top: 0; bottom: 0;
+      width: 260px;
+      pointer-events: none;
     }
-    .bento-portrait img {
+    .sc-portrait img {
       width: 100%; height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: top center;
       display: block;
     }
 
-    /* Base card */
-    .bcard {
-      border-radius: 20px;
-      padding: 32px 30px;
+    /* Floating card base */
+    .sc-card {
+      position: absolute;
       display: flex; flex-direction: column;
-      justify-content: space-between;
+      align-items: center; gap: 10px;
       text-decoration: none;
-      cursor: pointer;
-      position: relative;
+      transition: opacity .22s ease;
+    }
+    .sc-card:hover { opacity: .72; }
+
+    .sc-img {
+      border-radius: 16px;
       overflow: hidden;
-      transition: transform .3s cubic-bezier(.25,.46,.45,.94),
-                  box-shadow .3s cubic-bezier(.25,.46,.45,.94);
-    }
-    .bcard:hover { transform: translateY(-4px); }
-
-    .bcard-eyebrow {
-      font-size: 10px; font-weight: 700;
-      letter-spacing: .14em; text-transform: uppercase;
-      opacity: .5; margin-bottom: auto;
-    }
-
-    .bcard-title {
-      font-family: var(--display);
-      font-size: clamp(26px, 2.8vw, 40px);
-      line-height: 1;
+      background: #f0ede8;
       display: block;
-      margin-top: 16px;
+    }
+    .sc-img img {
+      display: block; width: 100%; height: 100%;
+      object-fit: cover;
     }
 
-    .bcard-arrow {
-      position: absolute;
-      bottom: 28px; right: 28px;
-      font-size: 20px;
-      opacity: .4;
-      transition: opacity .2s, transform .3s;
-    }
-    .bcard:hover .bcard-arrow { opacity: 1; transform: translate(3px, -3px); }
-
-    /* About — warm cream */
-    .bcard-about {
-      background: #F5F0EB;
-      color: var(--text);
-      grid-column: 1; grid-row: 1;
-      box-shadow: inset 0 0 0 1px rgba(26,26,26,.07);
-    }
-    .bcard-about:hover {
-      box-shadow: inset 0 0 0 1px rgba(26,26,26,.12),
-                  0 20px 48px rgba(180,160,130,.18);
+    .sc-label {
+      font-size: 14px; font-weight: 600;
+      color: var(--muted);
+      letter-spacing: -0.02em;
+      text-align: center;
     }
 
-    /* Interests — soft blue tint */
-    .bcard-interests {
-      background: #EEF5FF;
-      color: var(--text);
-      grid-column: 3; grid-row: 1;
-      box-shadow: inset 0 0 0 1px rgba(0,153,255,.1);
+    /* About Me — left upper */
+    .sc-about {
+      left: 8%; top: 6%;
+      animation: float3 5.5s ease-in-out infinite;
     }
-    .bcard-interests:hover {
-      box-shadow: inset 0 0 0 1px rgba(0,153,255,.18),
-                  0 20px 48px rgba(0,153,255,.1);
-    }
+    .sc-about .sc-img { width: 110px; height: 150px; }
 
-    /* Work — dark */
-    .bcard-work {
-      background: #111110;
-      color: #FFFFFF;
-      grid-column: 1; grid-row: 2;
+    /* Work — left lower */
+    .sc-work {
+      left: 16%; top: 52%;
+      animation: float2 4.8s ease-in-out infinite;
     }
-    .bcard-work:hover {
-      box-shadow: 0 20px 48px rgba(0,0,0,.28);
-    }
-    .bcard-work .bcard-eyebrow { color: rgba(255,255,255,.5); opacity: 1; }
-    .bcard-work .bcard-title   { color: #FFFFFF; }
-    .bcard-work .bcard-arrow   { color: #FFFFFF; }
+    .sc-work .sc-img { width: 130px; height: 125px; }
 
-    /* Contact — accent blue */
-    .bcard-contact {
-      background: var(--accent);
-      color: #FFFFFF;
-      grid-column: 3; grid-row: 2;
+    /* Contact — right upper */
+    .sc-contact {
+      right: 9%; top: 12%;
+      animation: float1 5s ease-in-out infinite;
     }
-    .bcard-contact:hover {
-      box-shadow: 0 20px 48px rgba(0,153,255,.3);
-    }
-    .bcard-contact .bcard-eyebrow { color: rgba(255,255,255,.6); opacity: 1; }
-    .bcard-contact .bcard-title   { color: #FFFFFF; }
-    .bcard-contact .bcard-arrow   { color: #FFFFFF; }
+    .sc-contact .sc-img { width: 115px; height: 195px; }
 
-    /* Decorative shape on work card */
-    .bcard-work::before {
-      content: '';
-      position: absolute;
-      width: 180px; height: 180px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.07);
-      bottom: -40px; right: -40px;
-      pointer-events: none;
+    /* Interests — right lower */
+    .sc-interests {
+      right: 14%; top: 58%;
+      animation: float3 4.2s ease-in-out 0.6s infinite;
     }
-
-    /* Decorative shape on contact card */
-    .bcard-contact::before {
-      content: '';
-      position: absolute;
-      width: 200px; height: 200px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.08);
-      top: -60px; left: -60px;
-      pointer-events: none;
-    }
+    .sc-interests .sc-img { width: 115px; height: 190px; }
 
 
     /* ─── CONTACT POPUP ──────────────────────────────── */
@@ -575,11 +549,14 @@
       .pimg { height: 320px; }
 
       #about { padding: 0 24px 80px; }
-      .bento-grid {
-        grid-template-columns: 1fr 180px 1fr;
-        grid-template-rows: 240px 240px;
-      }
-      .bcard-title { font-size: 26px; }
+      .scatter-scene { height: 560px; }
+      .sc-portrait { width: 200px; }
+      .sc-about .sc-img  { width: 85px;  height: 115px; }
+      .sc-work .sc-img   { width: 100px; height: 96px;  }
+      .sc-contact .sc-img   { width: 88px;  height: 150px; }
+      .sc-interests .sc-img { width: 88px;  height: 146px; }
+      .sc-work { left: 4%; }
+      .sc-about { left: 2%; }
 
       footer { padding: 24px; flex-direction: column; gap: 16px; text-align: center; }
 
@@ -590,20 +567,17 @@
       .pimg { height: 280px; }
       .hero-sub { font-size: 26px; }
       .ptitle { font-size: 18px; }
-      .bento-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 200px 200px 280px;
-      }
-      .bento-portrait {
-        grid-column: 1 / 3;
-        grid-row: 3;
-      }
-      .bcard-about    { grid-column: 1; grid-row: 1; }
-      .bcard-interests { grid-column: 2; grid-row: 1; }
-      .bcard-work     { grid-column: 1; grid-row: 2; }
-      .bcard-contact  { grid-column: 2; grid-row: 2; }
-      .bcard { padding: 22px 18px; }
-      .bcard-title { font-size: 22px; }
+      .scatter-scene { height: 460px; }
+      .sc-portrait { width: 160px; }
+      .sc-about  { left: 0%;  top: 4%; }
+      .sc-about .sc-img  { width: 68px; height: 92px; }
+      .sc-work   { left: 2%; top: 55%; }
+      .sc-work .sc-img   { width: 80px; height: 77px; }
+      .sc-contact   { right: 2%; top: 8%; }
+      .sc-contact .sc-img   { width: 70px; height: 118px; }
+      .sc-interests { right: 3%; top: 56%; }
+      .sc-interests .sc-img { width: 70px; height: 116px; }
+      .sc-label { font-size: 12px; }
     }
   </style>
 </head>
@@ -724,43 +698,54 @@
   </section>
 
 
-  <!-- ══ BENTO / ABOUT ═══════════════════════════════════ -->
+  <!-- ══ COLLAB / ABOUT ══════════════════════════════════ -->
   <section id="about">
 
-    <div class="bento-grid">
+    <div class="collab-divider"></div>
 
-      <!-- Portrait — center, spans both rows -->
-      <div class="bento-portrait reveal">
+    <div class="collab-head reveal">
+      <p class="collab-title">Let's collaborate</p>
+      <a href="mailto:Jimenav02@Icloud.com" class="collab-email">Jimenav02@Icloud.com</a>
+    </div>
+
+    <div class="scatter-scene reveal">
+
+      <!-- Portrait — centered, dominant -->
+      <div class="sc-portrait">
         <img src="images/portrait-fullbody.png" alt="Jimena Vazquez">
       </div>
 
-      <!-- About Me — top left -->
-      <a href="about/" class="bcard bcard-about reveal">
-        <span class="bcard-eyebrow">Get to know me</span>
-        <span class="bcard-title">About Me</span>
-        <span class="bcard-arrow">↗</span>
+      <!-- About Me — left upper -->
+      <a href="about/" class="sc-card sc-about">
+        <div class="sc-img" style="width:110px;height:150px;">
+          <img src="images/portrait-18300d.png" alt="About Me">
+        </div>
+        <span class="sc-label">About</span>
       </a>
 
-      <!-- Interests — top right -->
-      <a href="interests/" class="bcard bcard-interests reveal" style="transition-delay:.08s">
-        <span class="bcard-eyebrow">Passions &amp; hobbies</span>
-        <span class="bcard-title">Interests</span>
-        <span class="bcard-arrow">↗</span>
+      <!-- Work — left lower -->
+      <a href="#work" class="sc-card sc-work">
+        <div class="sc-img" style="width:130px;height:125px;">
+          <img src="images/float-work.png" alt="Work">
+        </div>
+        <span class="sc-label">Work</span>
       </a>
 
-      <!-- Work — bottom left -->
-      <a href="#work" class="bcard bcard-work reveal" style="transition-delay:.12s">
-        <span class="bcard-eyebrow">Case studies</span>
-        <span class="bcard-title">Work</span>
-        <span class="bcard-arrow">↗</span>
-      </a>
-
-      <!-- Contact — bottom right -->
-      <div class="bcard bcard-contact reveal" id="bento-contact-btn" style="transition-delay:.16s">
-        <span class="bcard-eyebrow">Say hello</span>
-        <span class="bcard-title">Contact</span>
-        <span class="bcard-arrow">↗</span>
+      <!-- Contact — right upper -->
+      <div class="sc-card sc-contact" id="bento-contact-btn" style="cursor:pointer">
+        <div class="sc-img" style="width:115px;height:195px;">
+          <img src="images/float-contact.png" alt="Contact">
+        </div>
+        <span class="sc-label">Contact</span>
       </div>
+
+      <!-- Interests — right lower -->
+      <a href="interests/" class="sc-card sc-interests">
+        <div class="sc-img" style="width:115px;height:190px;">
+          <img src="images/float-linkedin.png" alt="Interests">
+        </div>
+        <span class="sc-label">Interests</span>
+      </a>
 
     </div>
   </section>
