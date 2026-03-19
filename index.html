@@ -385,14 +385,28 @@
       left: 50%; transform: translateX(-50%);
       top: 0; bottom: 0;
       width: 260px;
+      display: flex; flex-direction: column;
+      align-items: center;
       pointer-events: none;
     }
     .sc-portrait img {
-      width: 100%; height: 100%;
+      width: 100%; flex: 1;
       object-fit: contain;
       object-position: top center;
       display: block;
+      min-height: 0;
     }
+    .sc-portrait-label {
+      pointer-events: all;
+      font-size: 14px; font-weight: 600;
+      color: var(--muted); letter-spacing: -0.02em;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 10px;
+      transition: color .2s;
+      flex-shrink: 0;
+    }
+    .sc-portrait-label:hover { color: var(--text); }
 
     /* Floating card base */
     .sc-card {
@@ -405,14 +419,13 @@
     .sc-card:hover { opacity: .72; }
 
     .sc-img {
-      border-radius: 16px;
-      overflow: hidden;
-      background: #f0ede8;
       display: block;
+      background: transparent;
     }
     .sc-img img {
       display: block; width: 100%; height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      mix-blend-mode: multiply;
     }
 
     .sc-label {
@@ -422,16 +435,9 @@
       text-align: center;
     }
 
-    /* About Me — left upper */
-    .sc-about {
-      left: 8%; top: 6%;
-      animation: float3 5.5s ease-in-out infinite;
-    }
-    .sc-about .sc-img { width: 110px; height: 150px; }
-
-    /* Work — left lower */
+    /* Work — left */
     .sc-work {
-      left: 16%; top: 52%;
+      left: 10%; top: 30%;
       animation: float2 4.8s ease-in-out infinite;
     }
     .sc-work .sc-img { width: 130px; height: 125px; }
@@ -551,12 +557,10 @@
       #about { padding: 0 24px 80px; }
       .scatter-scene { height: 560px; }
       .sc-portrait { width: 200px; }
-      .sc-about .sc-img  { width: 85px;  height: 115px; }
       .sc-work .sc-img   { width: 100px; height: 96px;  }
       .sc-contact .sc-img   { width: 88px;  height: 150px; }
       .sc-interests .sc-img { width: 88px;  height: 146px; }
-      .sc-work { left: 4%; }
-      .sc-about { left: 2%; }
+      .sc-work { left: 2%; top: 28%; }
 
       footer { padding: 24px; flex-direction: column; gap: 16px; text-align: center; }
 
@@ -569,9 +573,7 @@
       .ptitle { font-size: 18px; }
       .scatter-scene { height: 460px; }
       .sc-portrait { width: 160px; }
-      .sc-about  { left: 0%;  top: 4%; }
-      .sc-about .sc-img  { width: 68px; height: 92px; }
-      .sc-work   { left: 2%; top: 55%; }
+      .sc-work   { left: 0%; top: 30%; }
       .sc-work .sc-img   { width: 80px; height: 77px; }
       .sc-contact   { right: 2%; top: 8%; }
       .sc-contact .sc-img   { width: 70px; height: 118px; }
@@ -713,17 +715,10 @@
       <!-- Portrait — centered, dominant -->
       <div class="sc-portrait">
         <img src="images/portrait-fullbody.png" alt="Jimena Vazquez">
+        <a href="about/" class="sc-portrait-label">About Me</a>
       </div>
 
-      <!-- About Me — left upper -->
-      <a href="about/" class="sc-card sc-about">
-        <div class="sc-img" style="width:110px;height:150px;">
-          <img src="images/portrait-18300d.png" alt="About Me">
-        </div>
-        <span class="sc-label">About</span>
-      </a>
-
-      <!-- Work — left lower -->
+      <!-- Work — left -->
       <a href="#work" class="sc-card sc-work">
         <div class="sc-img" style="width:130px;height:125px;">
           <img src="images/float-work.png" alt="Work">
