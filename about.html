@@ -6,27 +6,30 @@
   <title>About — Jimena Vazquez</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:      #FFFFFF;
-      --text:    #1A1A1A;
-      --accent:  #0099FF;
-      --muted:   #9B9C97;
-      --border:  rgba(26,26,26,.09);
-      --display: 'Abril Fatface', serif;
-      --body:    'Inter', sans-serif;
+      --bg:      #fff;
+      --surface: #fff;
+      --text:    #3f3025;
+      --accent:  #9b6c47;
+      --accent-strong: #7f5738;
+      --muted:   #8c7866;
+      --border:  rgba(95,72,50,.14);
+      --white:   #fff;
+      --display: 'Manrope', sans-serif;
+      --body:    'Manrope', sans-serif;
     }
 
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: var(--body); overflow-x: hidden; }
+    body { background: #fff; color: var(--text); font-family: var(--body); overflow-x: hidden; }
 
     /* grain */
     body::after {
-      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: .028;
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       background-size: 180px 180px;
     }
@@ -36,12 +39,12 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       height: 64px; padding: 0 48px;
       display: flex; align-items: center; justify-content: space-between;
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.88);
       backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--border);
     }
     .nav-brand { text-decoration: none; color: var(--text); }
-    .nav-name  { font-family: var(--display); font-size: 17px; display: block; }
+    .nav-name  { font-family: var(--body); font-size: 17px; display: block; }
     .nav-role  { font-size: 10.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); display: block; margin-top: 2px; }
     .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a {
@@ -67,7 +70,7 @@
       text-transform: uppercase; color: var(--muted); margin-bottom: 20px;
     }
     .hero-name {
-      font-family: var(--display);
+      font-family: var(--body);
       font-size: clamp(52px, 7vw, 96px);
       line-height: .95; color: var(--text); margin-bottom: 28px;
     }
@@ -104,7 +107,7 @@
     .acc-trigger:hover .acc-title { color: var(--accent); }
 
     .acc-title {
-      font-family: var(--display);
+      font-family: var(--body);
       font-size: clamp(26px, 3vw, 38px);
       color: var(--text); line-height: 1; transition: color .2s;
     }
@@ -113,17 +116,18 @@
       width: 36px; height: 36px; border-radius: 50%;
       border: 1.5px solid var(--border); flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
+      color: var(--text);
       transition: background .25s, border-color .25s, transform .35s cubic-bezier(.25,.46,.45,.94);
     }
     .acc-icon svg { transition: transform .35s cubic-bezier(.25,.46,.45,.94); }
 
     .acc-trigger[aria-expanded="true"] .acc-icon {
-      background: var(--accent); border-color: var(--accent);
+      background: var(--accent); border-color: var(--accent); color: var(--white);
     }
     .acc-trigger[aria-expanded="true"] .acc-icon svg {
       transform: rotate(45deg);
     }
-    .acc-trigger[aria-expanded="true"] .acc-icon svg path { stroke: white; }
+    .acc-trigger[aria-expanded="true"] .acc-icon svg path { stroke: currentColor; }
 
     /* panel */
     .acc-panel {
@@ -169,7 +173,7 @@
     .exp-location { font-size: 12.5px; color: var(--muted); margin-bottom: 14px; }
     .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 9px; }
     .exp-bullets li {
-      font-size: 14px; line-height: 1.6; color: #3a3a3a;
+      font-size: 14px; line-height: 1.6; color: rgba(63,48,37,.88);
       padding-left: 18px; position: relative; letter-spacing: -.01em;
     }
     .exp-bullets li::before {
@@ -187,11 +191,11 @@
     .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .skill-tag {
       font-size: 13px; font-weight: 500; color: var(--text);
-      background: rgba(155,156,151,.1); padding: 7px 14px;
+      background: rgba(155,108,71,.08); padding: 7px 14px;
       border-radius: 100px; letter-spacing: -.01em;
       transition: background .2s, color .2s;
     }
-    .skill-tag:hover { background: rgba(0,153,255,.1); color: var(--accent); }
+    .skill-tag:hover { background: rgba(155,108,71,.14); color: var(--accent-strong); }
 
     /* ── FOOTER ─────────────────────────────────────────── */
     footer {
@@ -199,7 +203,7 @@
       display: flex; align-items: center; justify-content: space-between;
       border-top: 1px solid var(--border);
     }
-    .f-name  { font-family: var(--display); font-size: 14px; color: var(--text); }
+    .f-name  { font-family: var(--body); font-size: 14px; color: var(--text); }
     .f-links { display: flex; gap: 28px; }
     .f-links a {
       font-size: 12.5px; font-weight: 500; color: var(--muted);
@@ -222,21 +226,26 @@
       .resume-wrap { padding: 60px 24px; }
       footer { padding: 24px; flex-direction: column; gap: 14px; text-align: center; }
     }
+
+    /* Site-wide final overrides: keep every page on one font and a white canvas. */
+    body, body * { font-family: var(--body) !important; letter-spacing: 0 !important; }
+    h1, h2, h3, h4, h5, h6, .hero-sub, .stitle, .ptitle, .nav-name, .f-name, .acc-title, .int-label, .pod-title, .modal-title { font-family: var(--body) !important; font-weight: 600 !important; }
+    html, body, main, section, footer, .nav, .hero, #work, #blog, .blog-shell, .blog-preview, .blog-badge, .pimg, .pimg-inner, .pimg-whoop, .pimg-oura, .pimg-longevity, .floating-item, .contact-popup, .pod-card, .skill-tag, .tag, .cp-icon { background: #fff !important; }
   </style>
 </head>
 <body>
 
   <!-- NAV -->
   <nav class="nav">
-    <a href="index.html" class="nav-brand">
+    <a href="/" class="nav-brand">
       <span class="nav-name">Jimena Vazquez</span>
       <span class="nav-role">Product &amp; Marketing</span>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html#work">Work</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-      <li><a href="interests.html">Interests</a></li>
-      <li><a href="mailto:Jimenav02@Icloud.com">Contact</a></li>
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/about/" class="active">About</a></li>
+      <li><a href="/interests/">Interests</a></li>
+      <li><a href="mailto:Jimenav02@icloud.com">Contact</a></li>
     </ul>
   </nav>
 
@@ -246,13 +255,12 @@
     <p class="hero-label">About me</p>
     <h1 class="hero-name">Jimena<br><span>Vázquez.</span></h1>
     <p class="hero-sub">
-      Product marketer and strategist bridging the gap between what users need
-      and what the market wants — from content and brand to full-funnel execution.
+      Product manager and strategist with a background in health science, AI-enabled product development, and end-to-end lifecycle ownership. I translate complex problems into clear product decisions and build things that actually work for the people using them. Entrepreneurial by nature, obsessed with learning, and deeply interested in how AI is reshaping what products can do.
     </p>
     <div class="hero-meta">
-      <a href="mailto:Jimenav02@Icloud.com" class="meta-link">
+      <a href="mailto:Jimenav02@icloud.com" class="meta-link">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-        Jimenav02@Icloud.com
+        Jimenav02@icloud.com
       </a>
       <div class="meta-sep"></div>
       <a href="tel:3055620663" class="meta-link">
@@ -277,7 +285,7 @@
         <span class="acc-title">Education</span>
         <span class="acc-icon">
           <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
-            <path d="M7 1v12M1 7h12" stroke="#1A1A1A" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
         </span>
       </button>
@@ -314,7 +322,7 @@
         <span class="acc-title">Experience</span>
         <span class="acc-icon">
           <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
-            <path d="M7 1v12M1 7h12" stroke="#1A1A1A" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
         </span>
       </button>
@@ -400,7 +408,7 @@
         <span class="acc-title">Skills &amp; Certifications</span>
         <span class="acc-icon">
           <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
-            <path d="M7 1v12M1 7h12" stroke="#1A1A1A" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
         </span>
       </button>
@@ -445,6 +453,7 @@
               <div class="skill-tags">
                 <span class="skill-tag">Harvard University — Technology Entrepreneurship Lab to Market</span>
                 <span class="skill-tag">HubSpot Academy — Social Media</span>
+                <span class="skill-tag">MindBodyGreen — Health Coaching &amp; Nutrition</span>
               </div>
             </div>
 
@@ -461,8 +470,8 @@
     <div class="f-name">Jimena Vazquez</div>
     <div class="f-links">
       <a href="https://www.linkedin.com/in/jimena-vázquez/" target="_blank">LinkedIn</a>
-      <a href="mailto:Jimenav02@Icloud.com">Email</a>
-      <a href="index.html#blog">Blog</a>
+      <a href="mailto:Jimenav02@icloud.com">Email</a>
+      <a href="https://wellnessforher.org" target="_blank" rel="noreferrer">Blog</a>
     </div>
     <div class="f-copy">© 2024 Jimena Vazquez</div>
   </footer>
